@@ -20,3 +20,21 @@ console.log(prod1.getDetails());
 
 prod1.updateStock(3);
 console.log(prod1.getDetails()); 
+
+//Task 2: Creating an Order Class
+//Scenario: Customers place orders for products, and the inventory system needs to track them.
+class Order {
+    constructor(orderId, product, quantity) {   //order class created with properties
+        this.orderId =orderId; 
+        this.product =product; 
+        this.quantity =quantity; 
+        this.totalPrice =product.price * quantity; 
+        this.product.updateStock(quantity);   // Reduce stock after quantity ordered
+    }
+    getOrderDetails() {       //returns order details
+        return `Order ID: ${this.orderId}, Product: ${this.product.name}, Quantity: ${this.quantity}, Total Price: $${this.totalPrice}`
+    }; 
+}
+const order1 = new Order(501, prod1, 2);
+console.log(order1.getOrderDetails());  //prints result
+console.log(prod1.getDetails()); 
