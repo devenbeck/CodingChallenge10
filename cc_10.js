@@ -58,3 +58,21 @@ class Inventory {       //inventory class including property products (array of 
 const inventory = new Inventory();   // test cases
 inventory.addProduct(prod1);
 inventory.listProducts();
+
+//Task 4: Implementing Order Management 
+//Scenario: The system should allow multiple orders to be placed and track them
+Inventory.prototype.placeOrder = function(orderId, product, quantity) {  //extends existing inventory class from task 3 
+    if (product.stock >= quantity) {
+        const newOrder = new Order(orderId, product, quantity); // Create new order
+        this.orders.push(newOrder); // Adding new Order to order array
+    
+    }
+}
+Inventory.prototype.listOrders = function() {  //logs all placed orders
+    this.orders.forEach(order => {
+        console.log(order.getOrderDetails());
+    });
+}
+inventory.placeOrder(601, prod1, 2);
+inventory.listOrders();
+console.log(prod1.getDetails());
