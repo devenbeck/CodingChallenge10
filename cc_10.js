@@ -38,3 +38,23 @@ class Order {
 const order1 = new Order(501, prod1, 2);
 console.log(order1.getOrderDetails());  //prints result
 console.log(prod1.getDetails()); 
+
+//Task 3: Creating an Inventory Class
+//Scenario: The store needs to keep track of multiple products
+class Inventory {       //inventory class including property products (array of product instances)
+    constructor() {
+        this.products = []; // Array of products in Inventory
+        this.orders= []; // Array of Orders Placed
+    }
+    addProduct(product) {
+        this.products.push(product); // Adds new product to inventory
+    }
+    listProducts(){   //logs all products details
+        this.products.forEach(product =>{
+            console.log(product.getDetails());
+        });
+    }
+}
+const inventory = new Inventory();   // test cases
+inventory.addProduct(prod1);
+inventory.listProducts();
