@@ -76,3 +76,15 @@ Inventory.prototype.listOrders = function() {  //logs all placed orders
 inventory.placeOrder(601, prod1, 2);
 inventory.listOrders();
 console.log(prod1.getDetails());
+
+//Task 5: Implementing Product Restocking 
+//Scenario: A store needs to restock products when supply is low
+Inventory.prototype.restockProduct = function(productID, quantity) {
+    const product = this.products.find(p => p.id === productID); //searches for product in products array, is array method
+    if (product) {                           //checks if id of current product matches the productId     
+        product.stock += quantity;    //increases product stock by determined quantity
+        console.log(`Product ID: ${productID} restocked. New stock: ${product.stock}`);
+    } 
+};
+inventory.restockProduct(101, 5);
+console.log(prod1.getDetails());   //prints result of stock
